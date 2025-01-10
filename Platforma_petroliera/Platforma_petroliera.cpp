@@ -1,20 +1,25 @@
-// Platforma_petroliera.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+﻿#include "Simulare.h"
+using namespace std;
 
-#include <iostream>
-
-int main()
+int main() 
 {
-    std::cout << "Hello World!\n";
+    Simulare simulare;
+
+    // Adaugam platforme
+    simulare.adaugaPlatforma(Platforma("Platforma 1", 100, 500));
+    simulare.adaugaPlatforma(Platforma("Platforma 2", 150, 600));
+
+    // Adaugam derivate
+    simulare.adaugaDerivat(Derivat("Benzină", 5.0));
+    simulare.adaugaDerivat(Derivat("Motorină", 4.5));
+
+    // Simulam mai multe zile
+    for (int i = 0; i < 3; ++i) 
+    {
+        cout << "\nZiua " << i + 1 << ":\n";
+        simulare.simuleazaZi();
+        simulare.afiseazaRaport();
+    }
+
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
