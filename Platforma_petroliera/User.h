@@ -6,8 +6,8 @@
 
 class User : public Account {
 public:
-    User(const std::string& user, const std::string& pass);
-    bool login(const std::string& user, const std::string& pass) override;
+    User(const string& user, const string& pass);
+    bool login(const string& user, const string& pass) override;
     void displayRole() const override;
 };
 

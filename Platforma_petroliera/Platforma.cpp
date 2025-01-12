@@ -9,19 +9,20 @@ void Platforma::extragePetrol()
     if (stocCurent + cantitateZilnica <= capacitateMaxima) 
     {
         stocCurent += cantitateZilnica;
-        cout << nume << ": Extras " << cantitateZilnica << " unități de petrol. Stoc curent: " << stocCurent << "\n";
+        cout << nume << ": Extras " << cantitateZilnica <<" unitati de petrol.Stoc curent : " << stocCurent << "\n";
     }
     else 
     {
         double cantitateRamasa = capacitateMaxima - stocCurent;
         stocCurent = capacitateMaxima;
-        cout << nume << ": Capacitate maximă atinsă! Doar " << cantitateRamasa << " unități au fost extrase.\n";
+        cout << nume <<": Capacitate maxima atinsa! Doar " << cantitateRamasa << " unitati au fost extrase.\n";
     }
 }
 
 double Platforma::transportaPetrol(double cantitate) 
 {
-    if (cantitate > stocCurent) {
+    if (cantitate > stocCurent) 
+    {
         double livrat = stocCurent;
         stocCurent = 0;
         return livrat;
@@ -35,8 +36,18 @@ double Platforma::transportaPetrol(double cantitate)
 
 void Platforma::afiseazaInformatii() const 
 {
-    std::cout << "Platforma: " << nume
-        << "\nCantitate zilnică: " << cantitateZilnica
+    cout << "Platforma: " << nume
+        << "\nCantitate zilnica: " << cantitateZilnica
         << "\nStoc curent: " << stocCurent
-        << "\nCapacitate maximă: " << capacitateMaxima << "\n";
+        << "\nCapacitate maxima: " << capacitateMaxima << "\n";
 }
+
+void Platforma::consumaPetrol(double cantitate) 
+{
+    if (cantitate > stocCurent) {
+        cerr << "Eroare: Cantitatea solicitata depaseste stocul curent al platformei.\n";
+        return;
+    }
+    stocCurent -= cantitate;
+}
+

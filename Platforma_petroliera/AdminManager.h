@@ -9,18 +9,18 @@
 
 class AdminManager {
 private:
-    std::vector<std::unique_ptr<Account>> accounts;
+    vector<unique_ptr<Account>> accounts;
 
-    Account* findAccountByUsername(const std::string& username);
+    Account* findAccountByUsername(const string& username);
 
 public:
     AdminManager();
 
-    bool login(const std::string& username, const std::string& password, Account*& loggedInAccount);
+    bool login(const string& username, const string& password, Account*& loggedInAccount);
 
-    void addUser(const std::string& username, const std::string& password);
-    void removeUser(const std::string& username);
-    void promoteToAdmin(const std::string& username);
+    void addUser(const string& username, const string& password);
+    void removeUser(const string& username);
+    void promoteToAdmin(const string& username);
 
     void listAccounts() const;
 };

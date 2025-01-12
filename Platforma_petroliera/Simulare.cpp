@@ -1,4 +1,4 @@
-#include "Simulare.h"
+﻿#include "Simulare.h"
 
 void Simulare::adaugaPlatforma(const Platforma& platforma) 
 {
@@ -23,15 +23,28 @@ void Simulare::simuleazaZi()
         cantitateTotala += platforma.getStocCurent();
     }
 
-    for (auto& derivat : derivate) 
+    //for (auto& derivat : derivate) 
+    //{
+    //    derivat.produce(cantitateTotala / derivate.size());
+    //}
+}
+void Simulare::afiseazaPlatforme() const 
+{
+    if (platforme.empty()) 
     {
-        derivat.produce(cantitateTotala / derivate.size());
+        cout << "Nu exista platforme adaugate.\n";
+        return;
+    }
+
+    cout << "\n--- Lista Platformelor ---\n";
+    for (const auto& platforma : platforme) 
+    {
+        platforma.afiseazaInformatii();
     }
 }
-
 void Simulare::afiseazaRaport() const 
 {
-    std::cout << "\n--- Raport Simulare ---\n";
+    cout << "\n--- Raport Simulare ---\n";
     for (const auto& platforma : platforme) 
     {
         platforma.afiseazaInformatii();
@@ -41,3 +54,48 @@ void Simulare::afiseazaRaport() const
         derivat.afiseazaInformatii();
     }
 }
+void Simulare::genereazaRaportFinanciar() const 
+{
+    if (derivate.empty()) 
+    {
+        cout << "Nu exista derivate pentru a genera un raport financiar.\n";
+        return;
+    }
+
+    double venituriTotale = 0;
+
+    cout << "\n--- Raport Financiar ---\n";
+    for (const auto& derivat : derivate) 
+    {
+        double venit = derivat.calculeazaVenit();
+        venituriTotale += venit;
+        derivat.afiseazaInformatii();
+        cout << "Venit din acest derivat: " << venit << "\n";
+    }
+
+    cout << "Venituri totale: " << venituriTotale << "\n";
+}
+void Simulare::produceDerivat(const string& numeDerivat, double cantitatePetrol) {
+    // Căutăm derivatul după nume
+    for (auto& derivat : derivate) {
+        if (derivat.getNume() == numeDerivat) 
+        {
+            // Calculăm cantitatea produsă cu un randament de 90%
+            double cantitateProdusa = cantitatePetrol * 0.9;
+            derivat.produce(cantitateProdusa);
+            cout << "Din " << cantitatePetrol << " unitati de petrol s-au produs "
+                << cantitateProdusa << " unitati de " << numeDerivat << ".\n";
+            return;
+        }
+    }
+    cout << "Derivatul " << numeDerivat << " nu exista.\n";
+}
+vector<Derivat>& Simulare::getDerivate()
+{
+    return derivate;
+}
+vector<Platforma>& Simulare::getPlatforme()
+{
+    return platforme;
+}
+

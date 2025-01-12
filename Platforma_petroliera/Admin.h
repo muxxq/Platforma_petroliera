@@ -6,8 +6,8 @@
 
 class Admin : public Account {
 public:
-    Admin(const std::string& user, const std::string& pass);
-    bool login(const std::string& user, const std::string& pass) override;
+    Admin(const string& user, const string& pass);
+    bool login(const string& user, const string& pass) override;
     void displayRole() const override;
     void manageSystem(); // Additional admin-specific functionality
 };

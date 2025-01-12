@@ -19,9 +19,12 @@ public:
     void extragePetrol();
     double transportaPetrol(double cantitate);
     void afiseazaInformatii() const;
+    void consumaPetrol(double cantitate);
+
 
     double getStocCurent() const { return stocCurent; }
     string getNume() const { return nume; }
+
 };
 
 #endif // PLATFORMA_H

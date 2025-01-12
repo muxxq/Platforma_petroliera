@@ -1,16 +1,16 @@
 #include "Admin.h"
 
-Admin::Admin(const std::string& user, const std::string& pass)
+Admin::Admin(const string& user, const string& pass)
     : Account(user, pass) {}
 
-bool Admin::login(const std::string& user, const std::string& pass) {
+bool Admin::login(const string& user, const string& pass) {
     return (username == user && password == pass);
 }
 
 void Admin::displayRole() const {
-    std::cout << "Logged in as Admin: " << username << std::endl;
+    cout << "Logged in as Admin: " << username << endl;
 }
 
 void Admin::manageSystem() {
-    std::cout << "Admin is managing the system..." << std::endl;
+    cout << "Admin is managing the system..." << endl;
 }

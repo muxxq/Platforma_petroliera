@@ -1,4 +1,4 @@
 #include "Account.h"
 
-Account::Account(const std::string& user, const std::string& pass)
+Account::Account(const string& user, const string& pass)
     : username(user), password(pass) {}

@@ -18,6 +18,12 @@ public:
     void adaugaDerivat(const Derivat& derivat);
     void simuleazaZi();
     void afiseazaRaport() const;
+    void afiseazaPlatforme() const;
+    void genereazaRaportFinanciar() const;
+    void produceDerivat(const string& numeDerivat, double cantitatePetrol);
+    vector<Derivat>& getDerivate();
+    vector<Platforma>& getPlatforme();
+
 };
 
 #endif // SIMULARE_H
