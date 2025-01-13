@@ -14,18 +14,22 @@ void afiseazaMeniu() {
     cout << "Alege o optiune: ";
 }
 
-int main() {
+int main() 
+{
     Simulare simulare;
     bool rulare = true;
 
-    while (rulare) {
+    while (rulare) 
+    {
         afiseazaMeniu();
 
         int optiune;
         cin >> optiune;
 
-        switch (optiune) {
-        case 1: {
+        switch (optiune) 
+        {
+        case 1: 
+        {
             string nume;
             double cantitateZilnica, capacitateMaxima;
             cout << "Nume platforma: ";
@@ -37,7 +41,8 @@ int main() {
             simulare.adaugaPlatforma(Platforma(nume, cantitateZilnica, capacitateMaxima));
             break;
         }
-        case 2: {
+        case 2: 
+        {
             string nume;
             double pret;
             cout << "Nume derivat: ";
@@ -50,14 +55,15 @@ int main() {
         case 3:
             simulare.afiseazaPlatforme();
             break;
-        case 4: {
+        case 4: 
+            {
             string nume;
             double pretNou;
             cout << "Nume derivat: ";
             cin >> nume;
 
 
-            // Cautăm derivatul și actualizăm prețul
+            // Cautam derivatul si actualizam pretul
             bool gasit = false;
             for (auto& derivat : simulare.getDerivate()) 
             {
@@ -77,15 +83,16 @@ int main() {
             break;
 
         }
-        case 5: {
+        case 5: 
+            {
             string numeDerivat, numePlatforma;
             double cantitatePetrol;
 
-            // Solicităm utilizatorului numele derivatului
+            // Solicitam utilizatorului numele derivatului
             cout << "Nume derivat: ";
             cin >> numeDerivat;
 
-            // Verificăm dacă derivatul există
+            // Verificam daca derivatul exista
             auto& derivate = simulare.getDerivate();
             auto derivatIt = find_if(derivate.begin(), derivate.end(),
                 [&numeDerivat](const Derivat& d) 
@@ -98,26 +105,28 @@ int main() {
                 break;
             }
 
-            // Solicităm utilizatorului numele platformei
+            // Solicitam utilizatorului numele platformei
             cout << "Nume platforma: ";
             cin >> numePlatforma;
 
-            // Verificăm dacă platforma există
-            auto& platforme = simulare.getPlatforme(); // Adăugăm o metodă getPlatforme()
+            // Verificam daca platforma exista
+            auto& platforme = simulare.getPlatforme(); 
             auto platformaIt = find_if(platforme.begin(), platforme.end(),
-                [&numePlatforma](const Platforma& p) {
+                [&numePlatforma](const Platforma& p) 
+                {
                     return p.getNume() == numePlatforma;
                 });
-            if (platformaIt == platforme.end()) {
+            if (platformaIt == platforme.end()) 
+            {
                 cout << "Eroare: Platforma \"" << numePlatforma << "\" nu exista.\n";
                 break;
             }
 
-            // Solicităm cantitatea de petrol de transformat
+            // Solicitam cantitatea de petrol de transformat
             cout << "Cantitate petrol pentru conversie: ";
             cin >> cantitatePetrol;
 
-            // Verificăm dacă platforma are suficient petrol
+            // Verificam daca platforma are suficient petrol
             if (platformaIt->getStocCurent() < cantitatePetrol) 
             {
                 cout << "Eroare: Platforma \"" << numePlatforma
@@ -126,8 +135,8 @@ int main() {
                 break;
             }
 
-            // Efectuăm conversia
-            platformaIt->consumaPetrol(cantitatePetrol); // Adăugăm o metodă consumaPetrol()
+            // Efectuam conversia
+            platformaIt->consumaPetrol(cantitatePetrol);
             derivatIt->produce(cantitatePetrol); // Producem derivatul
 
             cout << "Conversie reusita: " << cantitatePetrol << " unitati de petrol din platforma \""

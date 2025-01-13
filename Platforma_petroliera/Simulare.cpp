@@ -75,12 +75,14 @@ void Simulare::genereazaRaportFinanciar() const
 
     cout << "Venituri totale: " << venituriTotale << "\n";
 }
-void Simulare::produceDerivat(const string& numeDerivat, double cantitatePetrol) {
-    // Căutăm derivatul după nume
-    for (auto& derivat : derivate) {
+void Simulare::produceDerivat(const string& numeDerivat, double cantitatePetrol) 
+{
+    // Cautam derivatul dupa nume
+    for (auto& derivat : derivate) 
+    {
         if (derivat.getNume() == numeDerivat) 
         {
-            // Calculăm cantitatea produsă cu un randament de 90%
+            // Calculam cantitatea produsa cu un randament de 90%
             double cantitateProdusa = cantitatePetrol * 0.9;
             derivat.produce(cantitateProdusa);
             cout << "Din " << cantitatePetrol << " unitati de petrol s-au produs "
